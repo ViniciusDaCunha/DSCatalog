@@ -19,13 +19,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.devsuperior.dscatalog.dto.CategoryDTO;
-import com.devsuperior.dscatalog.services.CategoryService;
+import com.devsuperior.dscatalog.dto.ProductDTO;
+import com.devsuperior.dscatalog.services.ProductService;
 
 @RestController
-@RequestMapping(value = "/categories")
+@RequestMapping(value = "/products")
 //rota REST (requisições web) do recurso
-public class CategoryResource {
+public class ProductResource {
 	/**
 	 * Recebe requisições da API(a API ajudará a comunicar o que você quer ao
 	 * sistema para que ele entenda e realize o que foi solicitado).Pense nas APIs
@@ -35,11 +35,11 @@ public class CategoryResource {
 
 	@Autowired
 	// injeta dependencia com a camada service que chama repository
-	private CategoryService service;
+	private ProductService service;
 
 	@GetMapping
 	// Anotação para mapear solicitações HTTP
-	public ResponseEntity<Page<CategoryDTO>> findAll(
+	public ResponseEntity<Page<ProductDTO>> findAll(
 			@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "linesPerPage", defaultValue = "12") Integer linesPerPage,
 			@RequestParam(value = "orderBy", defaultValue = "ASC") String orderBy,
@@ -48,20 +48,20 @@ public class CategoryResource {
 		
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		
-		Page<CategoryDTO> list = service.findAllPaged(pageRequest);
+		Page<ProductDTO> list = service.findAllPaged(pageRequest);
 		return ResponseEntity.ok().body(list);
 	}
 
 	@GetMapping(value = "/{id}")
 	// Anotação para mapear solicitações HTTP
-	public ResponseEntity<CategoryDTO> findById(@PathVariable Long id) {
-		CategoryDTO dto = service.findById(id);
+	public ResponseEntity<ProductDTO> findById(@PathVariable Long id) {
+		ProductDTO dto = service.findById(id);
 		return ResponseEntity.ok().body(dto);
 	}
 
 	@PostMapping
 	// inserir novo recurso
-	public ResponseEntity<CategoryDTO> insert(@RequestBody CategoryDTO dto) {
+	public ResponseEntity<ProductDTO> insert(@RequestBody ProductDTO dto) {
 		dto = service.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
 		return ResponseEntity.created(uri).body(dto);
@@ -69,7 +69,7 @@ public class CategoryResource {
 
 	@PutMapping(value = "/{id}")
 	// atualizar um recurso
-	public ResponseEntity<CategoryDTO> update(@PathVariable Long id, @RequestBody CategoryDTO dto) {
+	public ResponseEntity<ProductDTO> update(@PathVariable Long id, @RequestBody ProductDTO dto) {
 		dto = service.update(id, dto);
 		return ResponseEntity.ok().body(dto);
 	}
