@@ -1,7 +1,7 @@
 package com.devsuperior.dscatalog.resources;
 
 import java.net.URI;
-import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -39,11 +39,11 @@ public class CategoryResource {
 
 	@GetMapping
 	// Anotação para mapear solicitações HTTP
-	public ResponseEntity<Page<CategoryDTO>> findAll(
+	public ResponseEntity<Page<CategoryDTO>> findAllPaged(
 			@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "linesPerPage", defaultValue = "12") Integer linesPerPage,
-			@RequestParam(value = "orderBy", defaultValue = "moment") String orderBy,
-			@RequestParam(value = "direction", defaultValue = "DESC") String direction
+			@RequestParam(value = "orderBy", defaultValue = "ASC") String orderBy,
+			@RequestParam(value = "direction", defaultValue = "name") String direction
 			) {
 		
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);

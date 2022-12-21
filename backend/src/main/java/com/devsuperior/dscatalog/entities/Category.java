@@ -25,10 +25,10 @@ public class Category implements Serializable {
 	private Long id;
 	private String name;
 	
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIMEZONE")
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant createdAt;
 	
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIMEZONE")
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant updatedAt;
 	
 	public Category() {
@@ -70,6 +70,7 @@ public class Category implements Serializable {
 	public void preUpdate() {
 		updatedAt = Instant.now();
 	}
+	
 
 	@Override
 	public int hashCode() {
