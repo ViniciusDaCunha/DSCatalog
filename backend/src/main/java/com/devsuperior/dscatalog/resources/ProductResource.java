@@ -6,6 +6,7 @@ import java.net.URI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,7 +28,7 @@ import com.devsuperior.dscatalog.services.ProductService;
 //rota REST (requisições web) do recurso
 public class ProductResource {
 	/**
-	 * Recebe requisições da API(a API ajudará a comunicar o que você quer ao
+	 * requisições da API(a API ajudará a comunicar o que você quer ao
 	 * sistema para que ele entenda e realize o que foi solicitado).Pense nas APIs
 	 * como um mediador entre os usuários ou clientes e os recursos ou serviços web
 	 * que eles querem obter.
@@ -39,16 +40,8 @@ public class ProductResource {
 
 	@GetMapping
 	// Anotação para mapear solicitações HTTP
-	public ResponseEntity<Page<ProductDTO>> findAll(
-			@RequestParam(value = "page", defaultValue = "0") Integer page,
-			@RequestParam(value = "linesPerPage", defaultValue = "12") Integer linesPerPage,
-			@RequestParam(value = "orderBy", defaultValue = "ASC") String orderBy,
-			@RequestParam(value = "direction", defaultValue = "name") String direction
-			) {
-		
-		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
-		
-		Page<ProductDTO> list = service.findAllPaged(pageRequest);
+	public ResponseEntity<Page<ProductDTO>> findAll(Pageable pageable) {
+		Page<ProductDTO> list = service.findAllPaged(pageable);
 		return ResponseEntity.ok().body(list);
 	}
 

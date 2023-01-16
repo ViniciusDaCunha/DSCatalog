@@ -10,6 +10,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,7 +22,7 @@ import com.devsuperior.dscatalog.services.exceptions.ResourcesNotFoundException;
 
 @Service
 /**
- * Camada responsável por fazer a chamada de alguma funcionalidade da camada de acesso de dados
+ * Camada responsável por fazer a chamada de alguma funcionalidade da camada de acesso a dados
  */
 public class CategoryService {
 	
@@ -31,8 +32,8 @@ public class CategoryService {
 	
 	@Transactional(readOnly = true) 
 	//método executado dentro de uma transação de banco de dados.
-	public Page<CategoryDTO> findAllPaged(PageRequest pageRequest){
-		Page<Category> list = repository.findAll(pageRequest);
+	public Page<CategoryDTO> findAllPaged(Pageable pageable){
+		Page<Category> list = repository.findAll(pageable);
 		return list.map(x -> new CategoryDTO(x));
 	}
 
