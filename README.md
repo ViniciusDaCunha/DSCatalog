@@ -23,13 +23,21 @@ O projeto utiliza as seguintes tecnologias:
 Spring Boot
 
 .JPA
+
 .H2
+
 .Bean Validation
+
 .Spring Security
+
 .OAuth 2.0
+
 .Token JWT
+
 .JUnit
+
 .Mockito
+
 
 
 Como executar o projeto
