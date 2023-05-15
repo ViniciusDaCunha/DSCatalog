@@ -1,6 +1,7 @@
 # DSCatalog
 Project made in BootCamp SpringBoot
 Modelo conceitual:
+
 ![2023-05-15 (2)](https://github.com/ViniciusDaCunha/DSCatalog/assets/99222396/b013c6db-036c-489a-a726-bcc21d6d4211)
 
 O DSCatalog é um sistema de catálogo de produtos que permite aos usuários visualizar, adicionar, atualizar e excluir informações sobre os produtos. Ele foi desenvolvido com a tecnologia Spring Boot e segue uma arquitetura em camadas bem definida.
