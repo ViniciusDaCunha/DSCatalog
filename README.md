@@ -22,15 +22,18 @@ O projeto utiliza as seguintes tecnologias:
 
 Spring Boot
 
-JPA
-H2
-Bean Validation
-Spring Security
-OAuth 2.0
-Token JWT
-JUnit
-Mockito
+.JPA
+.H2
+.Bean Validation
+.Spring Security
+.OAuth 2.0
+.Token JWT
+.JUnit
+.Mockito
+
+
 Como executar o projeto
+
 Para executar este projeto, você precisará ter o ambiente de desenvolvimento Java instalado em seu computador.
 
 Em seguida, siga os seguintes passos:
