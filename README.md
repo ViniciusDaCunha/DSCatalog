@@ -60,6 +60,7 @@ Execute o comando mvn spring-boot:run na linha de comando para iniciar o servido
 Acesse a URL http://localhost:8080 no seu navegador para ver a página inicial do sistema.
 
 Como testar o projeto
+
 Para testar o projeto, você pode usar o Postman para enviar requisições HTTP para os endpoints disponíveis.
 
-O projeto já vem com uma coleção do Postman contendo todos os endpoints disponíveis. Você pode importar essa coleção para o seu Postman e começar a testar imediatamente.
+
