@@ -50,7 +50,7 @@ Clone o repositório do projeto para o seu computador usando o seguinte comando:
 
 bash
 Copy code
-git clone https://github.com/dacunhavini/DSCatalog.git
+git clone git@github.com:ViniciusDaCunha/DSDelivery.git
 Abra o projeto em sua IDE de preferência (recomendamos o IntelliJ IDEA).
 
 Configure o arquivo application.properties com as suas credenciais de banco de dados.
