@@ -4,9 +4,9 @@ import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort.Direction;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,15 +23,9 @@ import com.devsuperior.dscatalog.services.CategoryService;
 
 @RestController
 @RequestMapping(value = "/categories")
-//rota REST (requisições web) do recurso
+//rota REST (requisições web)
 public class CategoryResource {
-	/**
-	 * Recebe requisições da API(a API ajudará a comunicar o que você quer ao
-	 * sistema para que ele entenda e realize o que foi solicitado).Pense nas APIs
-	 * como um mediador entre os usuários ou clientes e os recursos ou serviços web
-	 * que eles querem obter.
-	 */
-
+	
 	@Autowired
 	// injeta dependencia com a camada service que chama repository
 	private CategoryService service;
@@ -39,6 +33,7 @@ public class CategoryResource {
 	@GetMapping
 	// Anotação para mapear solicitações HTTP
 	public ResponseEntity<Page<CategoryDTO>> findAll(Pageable pageable) {
+		//Response entity retorna respostas HTTP de controladores REST
 		Page<CategoryDTO> list = service.findAllPaged(pageable);
 		return ResponseEntity.ok().body(list);
 	}
@@ -67,7 +62,7 @@ public class CategoryResource {
 	
 	@DeleteMapping(value = "/{id}")
 	// deleta um recurso
-	public ResponseEntity<Void> update(@PathVariable Long id) {
+	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
